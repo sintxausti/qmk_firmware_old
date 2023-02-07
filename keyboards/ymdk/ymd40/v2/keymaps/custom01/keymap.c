@@ -14,6 +14,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 enum custom_keycodes {
   ALTTAB = SAFE_RANGE,
   WINTAB,
+  eñe,
   EÑE
 };
 
@@ -40,10 +41,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // clear_keyboard();
       }
       break;
-    
+
+    case eñe: 
+      if (record->event.pressed){
+        SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_GRV) SS_UP(X_LSFT) SS_TAP(X_N));
+        alttab_token = true;
+      } else {
+        // Cuando la tecla es liberada
+        // clear_keyboard();
+      }
+      break;
+	 
     case EÑE: 
       if (record->event.pressed){
-        SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_N) SS_UP(X_LSFT));
+        SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_GRV) SS_TAP(X_N) SS_UP(X_LSFT));
         alttab_token = true;
       } else {
         // Cuando la tecla es liberada
@@ -169,10 +180,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
     
     [_LOWER]=LAYOUT_ortho_4x12(
-			KC_DEL,         KC_NO,		KC_NO,		DM_PLY2,		DM_PLY1,            KC_NO,	KC_GRV,		 TD(TD_EXCLAM),	KC_AT,		    TD(TD_EURO),	    KC_DLR,			KC_PERC,
-			LSFT(G(KC_S)),	WINTAB,		ALTTAB,	    C(G(KC_LEFT)),	C(G(KC_RIGHT)),		KC_NO,	KC_TILD,	 KC_CIRC,		KC_AMPR,	    KC_ASTR,	        KC_LPRN,	    KC_RPRN,
-			A(KC_F4),		KC_NO,		KC_NO,		G(S(KC_S)),		G(KC_V),		    KC_NO,	EÑE,	     KC_MINS,		KC_EQL,		    KC_BSLS,		    KC_LBRC,		KC_RBRC,
-			KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,		KC_TRNS,	        KC_NO,	KC_NO,		 MO(_OTHERS),	RALT(KC_LBRC),	RALT(KC_RBRC),		KC_LCBR,		KC_RCBR
+			KC_DEL,         KC_NO,		KC_NO,		DM_PLY2,		DM_PLY1,            KC_NO,	KC_GRV,		 	TD(TD_EXCLAM),	KC_AT,		    TD(TD_EURO),	    KC_DLR,			KC_PERC,
+			LSFT(G(KC_S)),	WINTAB,		ALTTAB,	    C(G(KC_LEFT)),	C(G(KC_RIGHT)),		KC_NO,	KC_TILD,	 	KC_CIRC,		KC_AMPR,	    KC_ASTR,	        KC_LPRN,	    KC_RPRN,
+			A(KC_F4),		KC_NO,		KC_NO,		G(S(KC_S)),		G(KC_V),		    KC_NO,	eñe,			KC_MINS,		KC_EQL,		    KC_BSLS,		    KC_LBRC,		KC_RBRC,
+			KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,		KC_TRNS,	        KC_NO,	KC_NO,		 	MO(_OTHERS),	RALT(KC_LBRC),	RALT(KC_RBRC),		KC_LCBR,		KC_RCBR
 	),
     
 	[_OTHERS]=LAYOUT_ortho_4x12(
