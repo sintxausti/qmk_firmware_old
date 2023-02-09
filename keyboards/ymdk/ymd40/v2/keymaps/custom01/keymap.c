@@ -14,8 +14,8 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 enum custom_keycodes {
   ALTTAB = SAFE_RANGE,
   WINTAB,
-  eñe,
-  EÑE
+  enne,
+  ENNE
 };
 
 bool alttab_token;
@@ -42,7 +42,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case eñe: 
+    case enne: 
       if (record->event.pressed){
         SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_GRV) SS_UP(X_LSFT) SS_TAP(X_N));
         alttab_token = true;
@@ -52,7 +52,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 	 
-    case EÑE: 
+    case ENNE: 
       if (record->event.pressed){
         SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_GRV) SS_TAP(X_N) SS_UP(X_LSFT));
         alttab_token = true;
@@ -176,13 +176,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_NO,		KC_F9,		KC_F10,		KC_F11,		KC_F12,		    KC_NO,	KC_NO,  KC_F21,		KC_F22,	    KC_F23,	    KC_F24,	KC_NO,
 			KC_NO,		KC_F5,		KC_F6,		KC_F7,		KC_F8,		    KC_NO,	KC_NO,	KC_F17,		KC_F18,	    KC_F19,	    KC_F20, KC_NO,
 			KC_NO,	    KC_F1,		KC_F2,		KC_F3,		KC_F4,		    KC_NO,	KC_NO,	KC_F13,		KC_F14,	    KC_F15, 	KC_F16, KC_NO,
-			KC_NO,      KC_PSCR,	KC_SCRL,    KC_PAUS,    MO(_OTHERS),    KC_NO,	KC_NO,	KC_NO,      KC_NO,	    KC_NO,      KC_NO,  KC_NO
+			KC_NO,      KC_PSCR,	KC_SCRL,    KC_PAUS,    MO(_OTHERS),    KC_TAB,	KC_TAB,	KC_NO,      KC_NO,	    KC_NO,      KC_NO,  KC_NO
 	),
     
     [_LOWER]=LAYOUT_ortho_4x12(
 			KC_DEL,         KC_NO,		KC_NO,		DM_PLY2,		DM_PLY1,            KC_NO,	KC_GRV,		 	TD(TD_EXCLAM),	KC_AT,		    TD(TD_EURO),	    KC_DLR,			KC_PERC,
 			LSFT(G(KC_S)),	WINTAB,		ALTTAB,	    C(G(KC_LEFT)),	C(G(KC_RIGHT)),		KC_NO,	KC_TILD,	 	KC_CIRC,		KC_AMPR,	    KC_ASTR,	        KC_LPRN,	    KC_RPRN,
-			A(KC_F4),		KC_NO,		KC_NO,		G(S(KC_S)),		G(KC_V),		    KC_NO,	eñe,			KC_MINS,		KC_EQL,		    KC_BSLS,		    KC_LBRC,		KC_RBRC,
+			A(KC_F4),		KC_NO,		KC_NO,		G(S(KC_S)),		G(KC_V),		    KC_NO,	enne,			KC_MINS,		KC_EQL,		    KC_BSLS,		    KC_LBRC,		KC_RBRC,
 			KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,		KC_TRNS,	        KC_NO,	KC_NO,		 	MO(_OTHERS),	RALT(KC_LBRC),	RALT(KC_RBRC),		KC_LCBR,		KC_RCBR
 	),
     
